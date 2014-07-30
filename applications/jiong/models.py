@@ -4,6 +4,7 @@
 from __future__ import division, unicode_literals, print_function
 from django.db import models
 from applications.ueditor.fields import UEditorField
+from applications.weixin.libs.formatters import BasicFormatter
 
 
 class Category(models.Model):
@@ -37,3 +38,13 @@ class Post(models.Model):
     def __unicode__(self):
         return self.title
 
+    def save(self, force_insert=False, force_update=False, using=None):
+        if self.content:
+            try:
+                self.content = BasicFormatter.format(self.content)
+            except:
+                pass
+        super(Post, self).save(force_insert, force_update, using)
+
+    def get_absolute_url(self):
+        return "/posts/%s/" % self.id

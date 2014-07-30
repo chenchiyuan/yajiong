@@ -1,0 +1,50 @@
+{% extends "jiong_base.html" %}
+{% block title %}
+    {{ post.title }} | 呀囧
+{% endblock %}
+
+{% block link %}
+{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-8 col-sm-8 col-lg-8" style="border: 1px solid;">
+                <h3>{{ post.title }}</h3>
+                {% autoescape off %}
+                    {{ post.content }}
+                {% endautoescape %}
+                <div class="rating">
+                    <span>{{ post.rating }} 好笑</span> <span class="ds-thread-count" data-thread-key="post-{{ post.id }}"></span>
+                </div>
+                <hr/>
+
+            </div>
+            <div class="ads cols-xs-12 col-md-5 col-sm-4 col-lg-4" style="border: 1px solid;">
+                <div class=""><p>这就是广告</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 多说评论框 start -->
+    <div class="container ds-thread" data-thread-key="post-{{ post.id }}" data-title="{{ post.title }}" data-url="{{ post.get_absolute_url }}"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"yajiong"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+                    || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+
+{% endblock %}
