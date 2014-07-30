@@ -109,6 +109,7 @@ INSTALLED_APPS = (
     'applications.ueditor',
     'applications.weixin',
     'applications.base',
+    'applications.jiong',
 
     'django.contrib.admin',
     'django.contrib.admindocs',
