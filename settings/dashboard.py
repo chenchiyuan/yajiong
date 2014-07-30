@@ -7,10 +7,20 @@ from grappelli.dashboard import modules, Dashboard
 
 
 class CustomIndexDashboard(Dashboard):
-    title = u"赫兹租车管理系统"
+    title = u"笑话管理后台"
 
     def init_with_context(self, context):
-        site_name = u"赫兹租车"
+        site_name = u"笑话管理"
+
+        self.children.append(modules.ModelList(
+            u"笑话管理",
+            column=1,
+            collapsible=True,
+            models=(
+                'applications.jiong.models.Post',
+                'applications.jiong.models.Category',
+            )
+        ))
 
         self.children.append(modules.ModelList(
             u"微信管理",
