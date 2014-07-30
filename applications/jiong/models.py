@@ -30,6 +30,8 @@ class Post(models.Model):
     title = models.CharField(u"标题", max_length=256)
     content = UEditorField(u"正文", default="", blank=True, null=True)
 
+    url = models.CharField(u"原链接", max_length=1024, blank=True, null=True, default="")
+
     rating = models.IntegerField(u"好笑", default=0, blank=True, null=True)
     created_at = models.DateTimeField(u"创建时间", auto_now=True)
 
