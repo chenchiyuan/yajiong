@@ -100,6 +100,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
+    'static_sitemaps',
 
     # third_parts
     'debug_toolbar',
@@ -186,3 +188,6 @@ RAVEN_CONFIG = {
 #MQ
 BROKER_URL = 'amqp://guest:guest@localhost:5672//'
 CELERY_IMPORTS = ['applications.certificate.tasks']
+
+# SITEMAP
+STATICSITEMAPS_ROOT_SITEMAP = 'applications.jiong.sitemap.sitemaps'
