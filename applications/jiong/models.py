@@ -5,6 +5,7 @@ from __future__ import division, unicode_literals, print_function
 from django.db import models
 from applications.ueditor.fields import UEditorField
 from applications.weixin.libs.formatters import BasicFormatter
+from bs4 import BeautifulSoup
 
 
 class Category(models.Model):
@@ -47,6 +48,14 @@ class Post(models.Model):
             except:
                 pass
         super(Post, self).save(force_insert, force_update, using)
+
+    def get_absolute_url(self):
+        return "/posts/%s/" % self.id
+
+    @property
+    def glance_content(self):
+        soup = BeautifulSoup(self.content)
+        return soup.text[:200]
 
     def get_absolute_url(self):
         return "/posts/%s/" % self.id
