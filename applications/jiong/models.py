@@ -72,4 +72,5 @@ class Post(models.Model):
     def get_keywords(self):
         keywords = self.keywords.split(",")
         keywords.extend(COMMON_KEYWORDS)
+        keywords.append(self.title)
         return ",".join(list(set(keywords)))
