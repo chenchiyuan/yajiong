@@ -37,6 +37,7 @@ class Post(models.Model):
     created_at = models.DateTimeField(u"创建时间", auto_now=True)
 
     categories = models.ManyToManyField(Category, verbose_name=u"分类", blank=True, null=True)
+    keywords = models.CharField(u"搜索关键字", max_length=8224, default="", blank=True, null=True)
 
     def __unicode__(self):
         return self.title
