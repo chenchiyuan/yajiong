@@ -38,7 +38,7 @@ TIME_ZONE = 'Asia/Shanghai'
 
 LANGUAGE_CODE = 'zh-cn'
 
-SITE_ID = 1
+SITE_ID = 2
 
 USE_I18N = True
 
