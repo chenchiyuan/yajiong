@@ -6,6 +6,7 @@ from django.db import models
 from applications.ueditor.fields import UEditorField
 from applications.weixin.libs.formatters import BasicFormatter
 from bs4 import BeautifulSoup
+from libs.keywords import Keyword
 
 
 class Category(models.Model):
@@ -48,6 +49,12 @@ class Post(models.Model):
                 self.content = BasicFormatter.format(self.content)
             except:
                 pass
+        if not self.keywords:
+            try:
+                self.keywords = ",".join(Keyword.get_keywords(self.title))
+            except:
+                pass
+
         super(Post, self).save(force_insert, force_update, using)
 
     def get_absolute_url(self):

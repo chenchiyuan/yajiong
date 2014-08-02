@@ -11,7 +11,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         posts = Post.objects.all()
         for post in posts:
-            print(post.title)
+            print("%s %s" % (post.id, post.title))
             if not post.keywords:
                 keywords = Keyword.get_keywords(post.title)
                 post.keywords = ",".join(keywords)

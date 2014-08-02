@@ -7,7 +7,7 @@ from applications.jiong.models import Post, Category
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['title', 'rating', 'created_at']
+    list_display = ['title', 'rating', 'created_at', "keywords"]
     search_fields = ['title']
 
     filter_horizontal = ['categories']
