@@ -7,6 +7,7 @@ from applications.ueditor.fields import UEditorField
 from applications.weixin.libs.formatters import BasicFormatter
 from bs4 import BeautifulSoup
 from libs.keywords import Keyword
+from applications.jiong.const import COMMON_KEYWORDS
 
 
 class Category(models.Model):
@@ -63,7 +64,12 @@ class Post(models.Model):
     @property
     def glance_content(self):
         soup = BeautifulSoup(self.content)
-        return soup.text[:200]
+        return soup.text.strip()[:200]
 
     def get_absolute_url(self):
         return "/posts/%s/" % self.id
+
+    def get_keywords(self):
+        keywords = self.keywords.split(",")
+        keywords.extend(COMMON_KEYWORDS)
+        return ",".join(list(set(keywords)))

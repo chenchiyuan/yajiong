@@ -1,6 +1,12 @@
 {% extends "jiong_base.html" %}
 {% block title %}
-    {{ post.title }} | 呀囧
+    {{ post.title }} | 吖囧 | 吖囧笑话段子囧糗事集中营 | {{ post.get_keywords }}
+{% endblock %}
+
+{% block meta %}
+    <meta name="title" content="{{ post.title }} | 吖囧 | 吖囧笑话段子囧糗事集中营 | {{ post.get_keywords }} ">
+    <meta name="keywords" content="{{ post.get_keywords }}">
+    <meta name="description" content="{{ post.glance_content }}">
 {% endblock %}
 
 {% block link %}
@@ -18,9 +24,6 @@
                 {% autoescape off %}
                     {{ post.content }}
                 {% endautoescape %}
-                <div class="rating">
-                    <span>{{ post.rating }} 好笑</span> <span class="ds-thread-count" data-thread-key="post-{{ post.id }}"></span>
-                </div>
                 <hr/>
 
             </div>
