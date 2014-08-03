@@ -7,6 +7,7 @@ from applications.jiong import const
 from applications.jiong.views import PostDetailView, PostListView
 
 urlpatterns = patterns('',
+    url(r'^$', PostListView.as_view(), name="home_view"),
     url(r'^posts/$', PostListView.as_view(), name="post_list_view"),
     url(r'^posts/%s/$' % const.URL_ID, PostDetailView.as_view(), name="post_detail_view"),
 )
