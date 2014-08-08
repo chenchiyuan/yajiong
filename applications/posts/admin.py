@@ -3,7 +3,7 @@
 
 from __future__ import division, unicode_literals, print_function
 from django.contrib import admin
-from applications.jiong.models import Post, Category
+from applications.posts.models import Post, Category
 
 
 class PostAdmin(admin.ModelAdmin):

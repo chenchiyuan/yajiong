@@ -13,12 +13,12 @@ class CustomIndexDashboard(Dashboard):
         site_name = u"笑话管理"
 
         self.children.append(modules.ModelList(
-            u"笑话管理",
+            u"内容管理",
             column=1,
             collapsible=True,
             models=(
-                'applications.jiong.models.Post',
-                'applications.jiong.models.Category',
+                'applications.posts.models.Post',
+                'applications.posts.models.Category',
             )
         ))
 

@@ -5,7 +5,7 @@ from __future__ import division, unicode_literals, print_function
 from django.core.management import BaseCommand
 import requests
 from bs4 import BeautifulSoup
-from applications.jiong.models import Post
+from applications.posts.models import Post
 
 import time
 

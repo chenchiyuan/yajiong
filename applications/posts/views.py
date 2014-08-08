@@ -4,7 +4,7 @@
 from __future__ import division, unicode_literals, print_function
 from django.template import RequestContext
 from django.views.generic import TemplateView
-from applications.jiong.models import Post
+from applications.posts.models import Post
 from libs.pagination import DiggPaginator
 
 

@@ -3,7 +3,7 @@
 
 from __future__ import division, unicode_literals, print_function
 from django.core.management import BaseCommand
-from applications.jiong.models import Post
+from applications.posts.models import Post
 from libs.keywords import Keyword
 
 

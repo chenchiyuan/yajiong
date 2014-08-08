@@ -3,8 +3,8 @@
 
 from __future__ import division, unicode_literals, print_function
 from django.conf.urls import patterns, url
-from applications.jiong import const
-from applications.jiong.views import PostDetailView, PostListView
+from applications.posts import const
+from applications.posts.views import PostDetailView, PostListView
 
 urlpatterns = patterns('',
     url(r'^$', PostListView.as_view(), name="home_view"),

@@ -7,13 +7,13 @@ from applications.ueditor.fields import UEditorField
 from applications.weixin.libs.formatters import BasicFormatter
 from bs4 import BeautifulSoup
 from libs.keywords import Keyword
-from applications.jiong.const import COMMON_KEYWORDS
+from applications.posts.const import COMMON_KEYWORDS
 
 
 class Category(models.Model):
     class Meta:
-        app_label = "jiong"
-        db_table = "jiong_category"
+        app_label = "posts"
+        db_table = "posts_category"
         verbose_name_plural = verbose_name = u"分类"
         ordering = ['-priority']
 
@@ -26,16 +26,16 @@ class Category(models.Model):
 
 class Post(models.Model):
     class Meta:
-        app_label = "jiong"
-        db_table = "jiong_post"
-        verbose_name_plural = verbose_name = u"笑话"
+        app_label = "posts"
+        db_table = "posts_post"
+        verbose_name_plural = verbose_name = u"文章"
 
     title = models.CharField(u"标题", max_length=256)
     content = UEditorField(u"正文", default="", blank=True, null=True)
 
     url = models.CharField(u"原链接", max_length=1024, blank=True, null=True, default="")
 
-    rating = models.IntegerField(u"好笑", default=0, blank=True, null=True)
+    rating = models.IntegerField(u"评分", default=0, blank=True, null=True)
     created_at = models.DateTimeField(u"创建时间", auto_now=True)
 
     categories = models.ManyToManyField(Category, verbose_name=u"分类", blank=True, null=True)
