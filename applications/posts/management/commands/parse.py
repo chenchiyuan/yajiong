@@ -21,9 +21,10 @@ gen_url = lambda query, page: "http://weixin.sogou.com/weixin?query=%s&type=2&pa
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
+        keyword = args[0]
         pages = range(1, 6000)
         for page in pages:
-            url = gen_url(u"笑话", page)
+            url = gen_url(keyword.decode("utf-8"), page)
             print(page)
             links = self.parse_url(url)
             for link in links:
