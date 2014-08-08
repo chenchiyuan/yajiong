@@ -10,6 +10,10 @@ from applications.posts.models import Post
 import time
 
 
+def smart_print(text):
+    print(text.encode("utf-8"))
+
+
 class Command(BaseCommand):
     def handle(self, *args, **options):
         posts = list(Post.objects.all())
@@ -18,12 +22,12 @@ class Command(BaseCommand):
                 try:
                     self.parse(post)
                 except Exception, err:
-                    print(err)
+                    smart_print(err)
                     continue
                 time.sleep(1)
 
     def parse(self, post):
-        print(post.title)
+        smart_print(post.title)
         content = requests.get(post.url).content
         soup = BeautifulSoup(content)
         page_content_tag = soup.find(id="page-content")
