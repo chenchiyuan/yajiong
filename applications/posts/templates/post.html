@@ -1,10 +1,10 @@
 {% extends "jiong_base.html" %}
 {% block title %}
-    {{ post.title }} | 吖囧 | 吖囧笑话段子囧糗事集中营 | {{ post.get_keywords }}
+    {{ post.title }} | {{ project_title }} | {{ project_slogan }}
 {% endblock %}
 
 {% block meta %}
-    <meta name="title" content="{{ post.title }} | 吖囧 | 吖囧笑话段子囧糗事集中营 | {{ post.get_keywords }} ">
+    <meta name="title" content="{{ post.title }} | {{ project_title }} | {{ project_slogan }}">
     <meta name="keywords" content="{{ post.get_keywords }}">
     <meta name="description" content="{{ post.glance_content }}">
 {% endblock %}
@@ -17,7 +17,7 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container" style="margin-top: 60px;">
         <div class="row">
             <div class="col-xs-12 col-md-8 col-sm-8 col-lg-8">
                 <h3>{{ post.title }}</h3>
