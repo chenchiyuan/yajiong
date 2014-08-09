@@ -26,7 +26,7 @@ class BasicFormatter(object):
         images = soup.find_all('img')
         for image in images:
             image['class'] = "img-responsive"
-            image['src'] = replace_image(image['src'], **kwargs)
+            image['src'] = image['src']
         return soup
 
     @classmethod
