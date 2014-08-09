@@ -198,4 +198,4 @@ BROKER_URL = 'amqp://guest:guest@localhost:5672//'
 CELERY_IMPORTS = ['applications.certificate.tasks']
 
 # SITEMAP
-STATICSITEMAPS_ROOT_SITEMAP = 'applications.jiong.sitemap.sitemaps'
+STATICSITEMAPS_ROOT_SITEMAP = 'applications.posts.sitemap.sitemaps'
