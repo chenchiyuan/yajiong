@@ -35,6 +35,7 @@ class PostListView(TemplateView):
         context['page'] = paginator.page(page)
         context['base_url'] = self.request.META.get("PATH_INFO", "/")
         context['categories'] = categories
+        context['current_page'] = page
         return context
 
 
@@ -50,12 +51,16 @@ class CategoryListView(TemplateView):
 
         category = Category.objects.get(**kwargs)
         categories = Category.objects.all().filter(show=True)
-        queryset = Post.objects.all().order_by("-rating")
+        if not category.name == u"精华":
+            queryset = category.post_set.all().order_by("-rating")
+        else:
+            queryset = Post.objects.filter(rating__gte=200).order_by("-rating")
         paginator = DiggPaginator(queryset, 12, body=5)
         context['page'] = paginator.page(page)
         context['base_url'] = self.request.META.get("PATH_INFO", "/")
         context['category'] = category
         context['categories'] = categories
+        context['current_page'] = page
         return context
 
 
