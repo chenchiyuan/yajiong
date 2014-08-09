@@ -8,6 +8,7 @@ from applications.weixin.libs.formatters import BasicFormatter
 from bs4 import BeautifulSoup
 from libs.keywords import Keyword
 from applications.posts.const import COMMON_KEYWORDS
+from django.conf import settings
 
 
 class Category(models.Model):
@@ -67,15 +68,12 @@ class Post(models.Model):
         super(Post, self).save(force_insert, force_update, using)
 
     def get_absolute_url(self):
-        return "/posts/%s/" % self.id
+        return settings.PROJECT_DOMAIN + "/posts/%s/" % self.id
 
     @property
     def glance_content(self):
         soup = BeautifulSoup(self.content)
         return soup.text.strip()[:200]
-
-    def get_absolute_url(self):
-        return "/posts/%s/" % self.id
 
     def get_keywords(self):
         keywords = self.keywords.split(",")

@@ -24,11 +24,19 @@ EMAIL_FROM = config.get("settings", "email_from")
 MANAGERS = ADMINS
 
 # PROJECT SETTINGS
+PROJECT_DOMAIN = config.get("project", "domain")
 PROJECT_TITLE = config.get("project", "title").decode("utf-8")
 PROJECT_SLOGAN = config.get("project", "slogan").decode("utf-8")
 PROJECT_KEYWORDS = config.get("project", "keywords").decode("utf-8").split(",")
 
+
 # END PROJECT SETTINGS
+
+#sitemap
+STATICSITEMAPS_DOMAIN = PROJECT_DOMAIN
+PING_GOOGLE = False
+STATICSITEMAPS_ROOT_DIR = os.path.join(PROJECT_HOME, "sitemaps")
+#end sitemap
 
 DATABASES = {
     'default': {
