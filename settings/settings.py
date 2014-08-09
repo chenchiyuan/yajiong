@@ -23,6 +23,13 @@ EMAIL_FROM = config.get("settings", "email_from")
 
 MANAGERS = ADMINS
 
+# PROJECT SETTINGS
+PROJECT_TITLE = config.get("project", "title").decode("utf-8")
+PROJECT_SLOGAN = config.get("project", "slogan").decode("utf-8")
+PROJECT_KEYWORDS = config.get("project", "keywords").decode("utf-8").split(",")
+
+# END PROJECT SETTINGS
+
 DATABASES = {
     'default': {
         'ENGINE': config.get("db", "engine"),
@@ -91,6 +98,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
     "django.core.context_processors.i18n",
     'django.contrib.messages.context_processors.messages',
+    'libs.processor.settings.load_settings',
 )
 
 INSTALLED_APPS = (
