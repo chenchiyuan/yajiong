@@ -14,7 +14,7 @@ class PostAdmin(admin.ModelAdmin):
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['name', 'priority']
+    list_display = ['name', 'priority', "show", "link"]
 
 
 admin.site.register(Post, PostAdmin)

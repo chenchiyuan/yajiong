@@ -19,9 +19,17 @@ class Category(models.Model):
 
     name = models.CharField(u'名称', max_length=256)
     priority = models.IntegerField(u"优先级", default=0)
+    show = models.BooleanField(u'是否展示到首页', default=False)
+    link = models.CharField(u"链接地址", default="", blank=True, null=True, max_length=1024)
 
     def __unicode__(self):
         return self.name
+
+    def get_absolute_url(self):
+        if self.link:
+            return self.link
+        else:
+            return "/categories/%s/" % self.id
 
 
 class Post(models.Model):
