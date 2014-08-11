@@ -1,0 +1,6 @@
+# robots.txt
+User-agent: *
+Crawl-delay: 10
+Disallow: /admin/
+Disallow: /search/
+Sitemap: {{ project_domain }}/sitemap.xml

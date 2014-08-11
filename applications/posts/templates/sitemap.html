@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset>
+    {% for post_id, title in posts %}
+        <url>
+            <loc>{{ project_domain }}/posts/{{ post_id }}/</loc>
+            <lastmod>{{ now|date:"Y-m-d\TH:i:sO"|slice:":-2" }}:00</lastmod>
+            <changefreq>always</changefreq>
+            <priority>1.0</priority>
+            <data>
+                <display>
+                    <originality>1</originality>
+                    <title>{{ title }}</title>
+                    <release_time>{{ now|date:"Y-m-d\TH:i:sO"|slice:":-2" }}:00</release_time>
+                    <source>{{ project_domain }}</source>
+                </display>
+            </data>
+        </url>
+    {% endfor %}
+</urlset>

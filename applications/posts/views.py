@@ -2,9 +2,11 @@
 # __author__ = chenchiyuan
 
 from __future__ import division, unicode_literals, print_function
+from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, View
 from applications.posts.models import Post, Category
+from libs.datetimes import datetime_now
 from libs.pagination import DiggPaginator
 
 
@@ -84,3 +86,18 @@ class SearchView(TemplateView):
         context['current_page'] = page
         context['q'] = q
         return context
+
+
+class SitemapView(View):
+    def get(self, request, *args, **kwargs):
+        now = datetime_now()
+        posts = Post.objects.all().values_list("id", "title")
+        context = {"posts": posts, "now": now}
+        return render_to_response("sitemap.html", RequestContext(request, context),
+                                  content_type="application/xhtml+xml")
+
+
+class RobotsView(View):
+    def get(self, request, *args, **kwargs):
+        return render_to_response("robots.txt", RequestContext(request, {}),
+                                  content_type="text/plain;")

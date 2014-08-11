@@ -10,4 +10,5 @@ def load_settings(request):
         "project_title": settings.PROJECT_TITLE,
         "project_slogan": settings.PROJECT_SLOGAN,
         "project_keywords": settings.PROJECT_KEYWORDS,
+        "project_domain": settings.PROJECT_DOMAIN,
     }
