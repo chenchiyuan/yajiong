@@ -73,7 +73,7 @@ class Post(models.Model):
     @property
     def glance_content(self):
         soup = BeautifulSoup(self.content)
-        return soup.text.strip()[:200]
+        return soup.text.strip()[:400]
 
     def get_keywords(self):
         keywords = self.keywords.split(",")
