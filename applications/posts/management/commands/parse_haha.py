@@ -19,7 +19,12 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         start, end = args
         for i in range(int(start), int(end)):
-            self.parse_url(index=i)
+            print(i)
+            try:
+                self.parse_url(index=i)
+            except:
+                print("error %s" % i)
+                continue
 
     def parse_url(self, index):
         # http://haha.sogou.com/main/content/17243
